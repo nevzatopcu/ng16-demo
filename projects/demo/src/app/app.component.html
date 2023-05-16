@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <nav class="nav">
+    <a
+      class="nav-link"
+      role="navigation"
+      aria-current="page"
+      routerLink="/home"
+      routerLinkActive="bg-info text-white"
+    >
+      Home
+    </a>
+    <a
+      class="nav-link"
+      role="navigation"
+      routerLink="required-inputs"
+      routerLinkActive="bg-info text-white"
+    >
+      Required Inputs
+    </a>
+
+    <a
+      class="nav-link"
+      role="navigation"
+      routerLink="signals"
+      routerLinkActive="bg-info text-white"
+    >
+      Signals
+    </a>
+
+    <a
+      class="nav-link"
+      role="navigation"
+      routerLink="event-coalescing"
+      routerLinkActive="bg-info text-white"
+    >
+      Configure Zone.js
+    </a>
+
+    <a
+      class="nav-link"
+      role="navigation"
+      routerLink="esbuild-vite"
+      routerLinkActive="bg-info text-white"
+    >
+      esbuild & vite
+    </a>
+  </nav>
+
+  <div class="mt-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
