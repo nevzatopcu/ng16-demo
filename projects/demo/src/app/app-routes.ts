@@ -32,4 +32,8 @@ export const appRoutes: Routes = [
     loadComponent: () => import('./vite-esbuild/vite-esbuild.component'),
     title: 'Esbuild & Vite',
   },
+  {
+    path: 'hydration',
+    loadComponent: () => import('./hydration/hydration.component'),
+  },
 ];

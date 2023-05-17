@@ -6,6 +6,11 @@ import { SignalsComponent } from './signals.component';
 const signalsRoutes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'counter',
+  },
+  {
+    path: '',
     component: SignalsComponent,
     children: [
       {
