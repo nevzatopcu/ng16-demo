@@ -10,6 +10,7 @@ export class RouterInputParams {
   @Input() id!: string;
   @Input('subId') secondId!: string;
   @Input() communityName!: string;
+  @Input() foo!: string;
   @Input() query!: string; // <path>?query=5;
 }
 
@@ -20,7 +21,8 @@ const communityNameResolver: ResolveFn<string> = () => {
 const routes: Routes = [
   {
     path: ':id',
-    data: { communityName: communityNameResolver },
+    resolve: { communityName: communityNameResolver },
+    data: { foo: 'foo' },
     children: [
       {
         path: ':subId',
