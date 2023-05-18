@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, CSP_NONCE } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { MESSAGE } from './message.token';
 
@@ -8,6 +8,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: MESSAGE,
       useValue: 'This is client-side',
+    },
+    {
+      provide: CSP_NONCE,
+      useValue: 'so-secret-it-is-impossible-to-guess',
     },
   ],
 };

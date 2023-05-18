@@ -5,6 +5,13 @@ import { MESSAGE } from './message.token';
   selector: 'app-root',
   standalone: true,
   template: `<p><strong>Message:</strong> {{ message }}</p>`,
+  styles: [
+    `
+      strong {
+        color: red;
+      }
+    `,
+  ],
 })
 export class AppComponent {
   message = inject(MESSAGE);
