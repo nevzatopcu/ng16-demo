@@ -2,17 +2,17 @@ import { Component, computed, effect, signal } from '@angular/core';
 
 @Component({
   template: `
-    <div>
-      <span>Count: {{ count() }}</span>
-      <span>Double: {{ doubleCount() }}</span>
-      <button (click)="increment()">increment</button>
-      <button (click)="decrement()">decrement</button>
-      <button (click)="reset()">reset</button>
+    <h2>Count: {{ count() }}</h2>
+    <h2>Double: {{ doubleCount() }}</h2>
+    <div class="d-flex gap-2">
+      <button class="btn btn-light" (click)="decrement()">decrement</button>
+      <button class="btn btn-light" (click)="increment()">increment</button>
+      <button class="btn btn-light" (click)="reset()">reset</button>
     </div>
   `,
   standalone: true,
 })
-export class SignalTimerComponent {
+export class SignalSetSignalValueComponent {
   count = signal(0);
   doubleCount = computed(() => this.count() * 2);
   isBig = signal(false);

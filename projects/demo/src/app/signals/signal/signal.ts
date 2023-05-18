@@ -2,11 +2,11 @@ import { Component, signal } from '@angular/core';
 
 @Component({
   template: `
-    <div>
-      <span>Count: {{ count() }}</span>
-      <button (click)="increment()">increment</button>
-      <button (click)="decrement()">decrement</button>
-      <button (click)="reset()">reset</button>
+    <h1>Count: {{ count() }}</h1>
+    <div class="d-flex gap-2">
+      <button class="btn btn-light" (click)="increment()">increment</button>
+      <button class="btn btn-light" (click)="decrement()">decrement</button>
+      <button class="btn btn-light" (click)="reset()">reset</button>
     </div>
   `,
   standalone: true,

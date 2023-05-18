@@ -4,7 +4,6 @@ import { Component, signal, computed, effect } from '@angular/core';
   selector: 'app-signal-full',
   standalone: true,
   template: `
-    <h1>🚦Angular signals example</h1>
     <h3>counter: {{ counter() }}</h3>
     <h3>is even: {{ isEven() }}</h3>
     <div class="d-flex gap-2 mt-4">
@@ -27,11 +26,11 @@ export class SignalFullComponent {
 
   constructor() {
     effect(() => {
-      console.log('called', this.counter());
+      console.warn('Counter:', this.counter());
     });
 
     effect(() => {
-      console.log('called isEven', this.isEven());
+      console.warn('isEven', this.isEven());
     });
 
     this.counter.set(1);

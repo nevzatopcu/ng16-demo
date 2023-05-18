@@ -27,7 +27,9 @@ export class ToDoService {
       <ul class="list-group">
         <li
           class="list-group-item pointer"
-          [ngClass]="task.completed ? 'text-decoration-line-through' : 'text-primary'"
+          [ngClass]="
+            task.completed ? 'text-decoration-line-through' : 'text-primary'
+          "
           *ngFor="let task of tasks()"
           (click)="toggleComplete(task.id)"
         >
@@ -40,7 +42,7 @@ export class ToDoService {
   imports: [NgFor, NgClass],
   standalone: true,
 })
-export class MutateSignalComponent {
+export class SignalMutateComponent {
   tasks = signal<Array<ToDo>>([]);
 
   constructor() {

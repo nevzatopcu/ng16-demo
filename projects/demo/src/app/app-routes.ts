@@ -22,6 +22,11 @@ export const appRoutes: Routes = [
     title: 'Required Inputs',
   },
   {
+    path: 'rxjs-interop',
+    loadChildren: () => import('./rxjs-interop/rxjs-interop.routes'),
+    title: 'Rxjs Interop',
+  },
+  {
     path: 'event-coalescing',
     loadComponent: () =>
       import('./event-coalescing/event-coalescing.component'),
@@ -33,7 +38,8 @@ export const appRoutes: Routes = [
     title: 'Esbuild & Vite',
   },
   {
-    path: 'hydration',
-    loadComponent: () => import('./hydration/hydration.component'),
+    path: 'router-inputs',
+    loadChildren: () =>
+      import('./router-input-params/router-input-params.routes'),
   },
 ];

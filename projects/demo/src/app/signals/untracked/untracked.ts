@@ -1,28 +1,44 @@
 import { Component, computed, effect, signal, untracked } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   template: `
-    <div>
-      <span>Count: {{ count() }}</span>
-      <span>Double: {{ doubleCount() }}</span>
-      <button (click)="increment()">increment</button>
-      <button (click)="decrement()">decrement</button>
-      <button (click)="reset()">reset</button>
+    <h2>Count: {{ count() }}</h2>
+    <div class="d-flex gap-2">
+      <button class="btn btn-light" (click)="decrement()">decrement</button>
+      <button class="btn btn-light" (click)="increment()">increment</button>
+      <button class="btn btn-light" (click)="reset()">reset</button>
+    </div>
+    <div class="input-group mt-3">
+      <input
+        placeholder="type user name here"
+        class="form-control"
+        [value]="userName()"
+        #input
+        type="text"
+      />
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="userName.set(input.value)"
+      >
+        set user name
+      </button>
     </div>
   `,
+  imports: [FormsModule],
   standalone: true,
 })
-export class SignalTimerComponent {
+export class SignalUntrackedComponent {
   count = signal(0);
-  userName = signal('newUser');
-  doubleCount = computed(() => this.count() * 2);
+  // TODO: Update user name.
+  userName = signal('ng Turkey');
 
   constructor() {
     effect(() => {
-      untracked(() => console.log('count changed by', this.userName()));
-      if (this.count() % 5) {
-        console.log('divisible by 5');
-      }
+      const count = this.count();
+      const userName = untracked(() => this.userName());
+      console.log(`Count: ${count}, userName: ${userName}`);
     });
   }
 

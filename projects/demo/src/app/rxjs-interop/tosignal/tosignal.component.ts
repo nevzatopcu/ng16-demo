@@ -1,28 +1,35 @@
-import { Component, Injector, Signal, inject } from '@angular/core';
-import { BehaviorSubject, Subject, interval } from 'rxjs';
+import { Component, Signal } from '@angular/core';
+import { timer } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
-  template: '',
+  template: ` <h2>Interval: {{ interval() }}</h2> `,
+  standalone: true,
 })
 export class ToSignalExampleComponent {
-  readonly obs = interval(500);
+  readonly obs$ = timer(0, 2000);
 
-  private readonly injector = inject(Injector);
+  interval: Signal<number | undefined> = toSignal(this.obs$); // returns readonly signal.
 
-  // require initial value:
-  counter: Signal<number> = toSignal(this.obs, { initialValue: 0 }); // returns readonly signal.
+  // interval: Signal<number | undefined> = toSignal(this.obs$, {
+  //   initialValue: 0,
+  // });
+
+  // interval: Signal<number | undefined> = toSignal(this.obs.pipe(startWith(0)), {requireSync: true});
 
   // has initial value
-  readonly behaviorSubject = new BehaviorSubject<number>(0);
-  signal = toSignal(this.behaviorSubject, { requireSync: true });
+  // readonly behaviorSubject = new BehaviorSubject<number>(0);
+  // signal = toSignal(
+  //   this.behaviorSubject.asObservable().pipe(debounceTime(500)),
+  //   { requireSync: true }
+  // );
 
   // throw error.
-  readonly subject = new Subject<number>();
-  signalFromSubjectSync = toSignal(this.behaviorSubject, { requireSync: true });
+  // readonly subject = new Subject<number>();
+  // signalFromSubjectSync = toSignal(this.behaviorSubject, { requireSync: true });
 
   // fine. returns undefined until observable emits
-  signalFromSubject = toSignal(this.behaviorSubject);
+  // signalFromSubject = toSignal(this.behaviorSubject);
 
   constructor() {
     // below methods are not available
@@ -31,6 +38,6 @@ export class ToSignalExampleComponent {
   }
 
   someFunction() {
-    const signal = toSignal(this.behaviorSubject, { injector: this.injector }); // requires injection context or injector.
+    // const signal = toSignal(this.behaviorSubject);
   }
 }

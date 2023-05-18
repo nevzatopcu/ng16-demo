@@ -1,60 +1,72 @@
+<nav
+  class="nav navbar-expand-lg navbar-dark bg-dark"
+  style="border-bottom: 1px solid #c5c5c5"
+>
+  <a
+    class="nav-link py-4 px-3 text-white"
+    role="navigation"
+    aria-current="page"
+    routerLink="/home"
+    routerLinkActive="bg-black"
+  >
+    Home
+  </a>
+
+  <a
+    class="nav-link py-4 px-3 text-white"
+    role="navigation"
+    routerLink="/signals"
+    routerLinkActive="bg-black"
+  >
+    Signals
+  </a>
+
+  <a
+    class="nav-link py-4 px-3 text-white"
+    role="navigation"
+    routerLink="/rxjs-interop"
+    routerLinkActive="bg-black"
+  >
+    rxjs interop
+  </a>
+
+  <a
+    class="nav-link py-4 px-3 text-white"
+    role="navigation"
+    routerLink="/required-inputs"
+    routerLinkActive="bg-black"
+  >
+    Required Inputs
+  </a>
+
+  <a
+    class="nav-link py-4 px-3 text-white"
+    role="navigation"
+    routerLink="/router-inputs/ng/turkey"
+    routerLinkActive="bg-black"
+  >
+    router inputs
+  </a>
+
+  <a
+    class="nav-link py-4 px-3 text-white"
+    role="navigation"
+    routerLink="/event-coalescing"
+    routerLinkActive="bg-black"
+  >
+    Configure Zone.js
+  </a>
+
+  <a
+    class="nav-link py-4 px-3 text-white"
+    role="navigation"
+    routerLink="/esbuild-vite"
+    routerLinkActive="bg-black"
+  >
+    esbuild & vite
+  </a>
+</nav>
 <div class="container mt-4">
-  <nav class="nav" style="border-bottom: 1px solid #c5c5c5">
-    <a
-      class="nav-link rounded"
-      role="navigation"
-      aria-current="page"
-      routerLink="/home"
-      routerLinkActive="bg-info text-white"
-    >
-      Home
-    </a>
-    <a
-      class="nav-link rounded"
-      role="navigation"
-      routerLink="required-inputs"
-      routerLinkActive="bg-info text-white"
-    >
-      Required Inputs
-    </a>
-
-    <a
-      class="nav-link rounded"
-      role="navigation"
-      routerLink="signals"
-      routerLinkActive="bg-info text-white"
-    >
-      Signals
-    </a>
-
-    <a
-      class="nav-link rounded"
-      role="navigation"
-      routerLink="event-coalescing"
-      routerLinkActive="bg-info text-white"
-    >
-      Configure Zone.js
-    </a>
-
-    <a
-      class="nav-link rounded"
-      role="navigation"
-      routerLink="esbuild-vite"
-      routerLinkActive="bg-info text-white"
-    >
-      esbuild & vite
-    </a>
-
-    <a
-      class="nav-link rounded"
-      role="navigation"
-      routerLink="hydration"
-      routerLinkActive="bg-info text-white"
-    >
-      Hydration
-    </a>
-  </nav>
-
   <div class="mt-4">
     <router-outlet></router-outlet>
   </div>

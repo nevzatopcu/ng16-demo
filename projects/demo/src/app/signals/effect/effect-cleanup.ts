@@ -2,30 +2,30 @@ import { Component, computed, effect, signal } from '@angular/core';
 
 @Component({
   template: `
-    <div>
-      <span>Count: {{ count() }}</span>
-      <span>Double: {{ doubleCount() }}</span>
-      <button (click)="increment()">increment</button>
-      <button (click)="decrement()">decrement</button>
-      <button (click)="reset()">reset</button>
+    <h2>Count: {{ count() }}</h2>
+    <div class="d-flex gap-2">
+      <button class="btn btn-light" (click)="decrement()">decrement</button>
+      <button class="btn btn-light" (click)="increment()">increment</button>
+      <button class="btn btn-light" (click)="reset()">reset</button>
     </div>
   `,
   standalone: true,
 })
-export class SignalTimerComponent {
+export class SignalEffectCleanup {
   count = signal(0);
-  doubleCount = computed(() => this.count() * 2);
 
   constructor() {
-    const timerEffect = effect(
+    effect(
       (onCleanup) => {
+        const count = this.count();
+
         const timer = setTimeout(() => {
-          console.log(`1 second ago, the count has changed`);
+          console.log(`1 second ago, the count became ${count}`);
         }, 1000);
 
         onCleanup(() => {
+          console.log('^clean timer');
           clearTimeout(timer);
-          timerEffect.destroy();
         });
       },
       { manualCleanup: true }

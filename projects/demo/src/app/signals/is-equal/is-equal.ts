@@ -5,45 +5,43 @@ import { isEqual } from 'lodash-es';
 @Component({
   template: `
     <div>
-      <span>Community: {{ community() | json }}</span>
-      <button (click)="change()">reset</button>
+      <div class="input-group mb-3">
+        <input
+          placeholder="type your query param here"
+          #input
+          class="form-control"
+          type="text"
+          [value]="community().name"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="change(input.value)"
+        >
+          update community name
+        </button>
+      </div>
+      <div>
+        <span class="d-block">Signal Value: {{ community() | json }}</span>
+        <span>Community name: {{ community().name }}</span>
+      </div>
     </div>
   `,
-  standalone: true,
   imports: [JsonPipe],
+  standalone: true,
 })
-export class SignalExampleComponent {
-  community = signal({ name: 'ngTurkey' }, { equal: isEqual });
+export class SignalIsEqualExampleComponent {
+  // community = signal({ name: 'ngTurkey' }, { equal: isEqual });
+  community = signal({ name: 'ngTurkey' });
 
   constructor() {
     // fires the effect after every single change.
-    effect(() => console.log(this.community()));
+    effect(() =>
+      console.warn(`value of signal has changed to`, this.community())
+    );
   }
 
-  change(): void {
-    this.community.set({ name: 'ngTurkey' });
-  }
-}
-
-@Component({
-  template: `
-    <div>
-      <span>Community: {{ community() | json }}</span>
-      <button (click)="change()">reset</button>
-    </div>
-  `,
-  standalone: true,
-  imports: [JsonPipe],
-})
-export class SignalEqualExampleComponent {
-  community = signal({ name: 'ngTurkey' }, { equal: isEqual });
-
-  constructor() {
-    // fixed.
-    effect(() => console.log(this.community()));
-  }
-
-  change(): void {
-    this.community.set({ name: 'ngTurkey' });
+  change(name: string): void {
+    this.community.set({ name });
   }
 }
